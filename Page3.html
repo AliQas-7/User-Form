@@ -16,7 +16,7 @@
 
     <div class="content-container">
       <h1>Personal Information</h1>
-      <form id="personal-info-form">
+      <form id="personal-info-form" action="Page4.html">
         <div class="form-group">
           <label for="firstName" class="form-label" id="pg2-label">First Name(*)</label>
           <input
@@ -86,22 +86,23 @@
             pattern="[0-9]{4}"
             required
           />
+          <span class="error-message" id="ssn-error"></span>
         </div>
 
         <div class="btn-container">
-            <button
-              type="button"
-              class="btn btn-primary-pre"
-              onclick="prevPage()"
-            >
-              Prev
-            </button>
-            <button type="button" class="btn btn-primary" id="next-button">
-              Next
-            </button>
-          </div>
-        </form>
-      </div>
+          <button
+            type="button"
+            class="btn btn-primary-pre"
+            onclick="prevPage()"
+          >
+            Prev
+          </button>
+          <button type="button" class="btn btn-primary" id="next-button" onclick="nextPage()">
+            Next
+          </button>
+        </div>
+      </form>
+    </div>
 
     <script>
       var currentPage = 3; // Set the current page number for this page
@@ -130,43 +131,58 @@
           }
         });
 
-        function validateForm() {
-        // Validate form fields here
-        var firstName = document.getElementById("firstName").value;
-        var lastName = document.getElementById("lastName").value;
-        var dob = document.getElementById("dob").value;
-        var ssn = document.getElementById("ssn").value;
+      function validateForm() {
+        // Validate Date of Birth
+        var dobInput = document.getElementById("dob");
+        var dobValue = dobInput.value;
+        var dobRegex = /^\d{2}\/\d{2}\/\d{4}$/;
+
+        if (!dobRegex.test(dobValue)) {
+          document.getElementById("dob-error").innerText =
+            "Please enter a valid date in MM/DD/YYYY format.";
+          return false;
+        } else {
+          document.getElementById("dob-error").innerText = "";
+        }
+
+        // Validate SSN
+        var ssnInput = document.getElementById("ssn");
+        var ssnValue = ssnInput.value;
+        var ssnRegex = /^[0-9]{4}$/;
+
+        if (!ssnRegex.test(ssnValue)) {
+          document.getElementById("ssn-error").innerText =
+            "Please enter the last 4 digits of your SSN.";
+          return false;
+        } else {
+          document.getElementById("ssn-error").innerText = "";
+        }
 
         // Check if any of the required fields are empty
-        if (firstName.trim() === "" || lastName.trim() === "" || dob.trim() === "" || ssn.trim() === "") {
+        var firstName = document.getElementById("firstName").value;
+        var lastName = document.getElementById("lastName").value;
+
+        if (
+          firstName.trim() === "" ||
+          lastName.trim() === "" ||
+          dob.trim() === "" ||
+          ssn.trim() === ""
+        ) {
           alert("Please fill in all required fields.");
           return false;
         }
-
-        // Add more specific validation rules for other fields if needed
 
         return true; // Form is valid
       }
 
       function prevPage() {
         // Redirect to the previous page (if needed)
-        window.location.href = "page2.html";
+        window.location.href = "Page2.html";
       }
 
       function nextPage() {
         // Redirect to the next page (if needed)
-        window.location.href = "page4.html";
-      }
-    </script>
-
-      function prevPage() {
-        // Redirect to the previous page (if needed)
-        window.location.href = "page2.html";
-      }
-
-      function nextPage() {
-        // Redirect to the next page (if needed)
-        window.location.href = "page4.html";
+        window.location.href = "Page4.html";
       }
     </script>
   </body>
