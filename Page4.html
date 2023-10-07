@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Information Form</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+    <div class="logo-container">
+        <img src="logo.png" alt="Logo" class="logo" />
+    </div>
+
+    <div id="progress-bar-container">
+        <div id="progress-bar"></div>
+    </div>
+    <span id="step-count">Step 1 of 2</span>
+
+    <div class="content-container">
+        <h1>Contact Information</h1>
+        <form id="contact-info-form" action="page2.html" onsubmit="return validateForm(event)">
+            
+            <div class="form-group">
+                <label class="form-label">What is the best way to reach you? (*)</label>
+                <div class="radio-container">
+                    <input type="radio" id="reachByEmail" name="reachMethod" value="Email" required checked>
+                    <label for="reachByEmail">Email</label>
+            
+                    <input type="radio" id="reachByPhone" name="reachMethod" value="Phone" required>
+                    <label for="reachByPhone">Phone</label>
+            
+                    <input type="radio" id="reachByText" name="reachMethod" value="Text Message" required>
+                    <label for="reachByText">Text Message</label>
+                </div>
+            </div>
+            
+            
+
+            
+            <div class="form-group">
+                <label for="phone" class="form-label">Phone(*)</label>
+                <input type="text" id="phone" name="phone" class="form-input" placeholder="XXX-XXX-XXXX" required>
+                <span class="error-message" id="phone-error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="form-label">Email(*)</label>
+                <input type="email" id="email" name="email" class="form-input" required>
+                <span class="error-message" id="email-error"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="address" class="form-label">Address</label>
+                <input type="text" id="address" name="address" class="form-input">
+            </div>
+
+            <div class="form-group">
+                <label for="aptFloorOther" class="form-label">Apt/Floor/Other</label>
+                <input type="text" id="aptFloorOther" name="aptFloorOther" class="form-input">
+            </div>
+
+            <div class="form-group">
+                <label for="city" class="form-label">City</label>
+                <input type="text" id="city" name="city" class="form-input">
+            </div>
+
+            <div class="form-group">
+                <label for="state" class="form-label">State</label>
+                <select id="state" name="state" class="form-input">
+                    <option value="AL">Alabama</option>
+                    <option value="AK">Alaska</option>
+                    <!-- Add more options for other states -->
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="zipCode" class="form-label">Zip Code</label>
+                <input type="text" id="zipCode" name="zipCode" class="form-input" pattern="[0-9]{5}" required>
+                <span class="error-message" id="zipCode-error"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">My Residential Address is(*)</label>
+                <div class="radio-container">
+                    <input type="radio" id="temporary" name="residentialAddress" value="Temporary" required>
+                    <label for="temporary" class="radio-label">Temporary</label>
+                                
+                    <input type="radio" id="permanent" name="residentialAddress" value="Permanent">
+                    <label for="permanent" class="radio-label">Permanent</label>
+                </div>
+            </div>
+            
+
+            <div class="btn-container">
+                <button type="button" class="btn btn-primary-pre" onclick="prevPage()">Prev</button>
+                <button type="button" class="btn btn-primary" onclick="nextPage()">Next</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        var currentPage = 4; // Set the current page number for this page
+
+        function updateProgressBar() {
+            var progressBar = document.getElementById("progress-bar");
+            var stepCount = document.getElementById("step-count");
+            var totalPages = 5; // Set the total number of pages
+
+            var percentComplete = (currentPage / totalPages) * 100;
+
+            progressBar.style.width = percentComplete + "%";
+            stepCount.innerText = "Step " + currentPage + " of " + totalPages;
+        }
+
+        // Update the progress bar and step count when the page loads
+        window.onload = function () {
+            updateProgressBar();
+        };
+
+        function validateForm(event) {
+            // Validate form fields here
+            var phone = document.getElementById("phone").value;
+            var email = document.getElementById("email").value;
+            var zipCode = document.getElementById("zipCode").value;
+
+            // Validate phone number using regex (XXX-XXX-XXXX format)
+            var phonePattern = /^\d{3}-\d{3}-\d{4}$/;
+            if (!phone.match(phonePattern)) {
+                document.getElementById("phone-error").innerText = "Enter a valid phone number in XXX-XXX-XXXX format.";
+                event.preventDefault(); // Prevent form submission
+                return false;
+            } else {
+                document.getElementById("phone-error").innerText = "";
+            }
+
+            // Validate email
+            var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            if (!email.match(emailPattern)) {
+                document.getElementById("email-error").innerText = "Enter a valid email address.";
+                event.preventDefault(); // Prevent form submission
+                return false;
+            } else {
+                document.getElementById("email-error").innerText = "";
+            }
+
+            // Validate zip code (5 digits only)
+            var zipCodePattern = /^\d{5}$/;
+            if (!zipCode.match(zipCodePattern)) {
+                document.getElementById("zipCode-error").innerText = "Enter a valid 5-digit zip code.";
+                event.preventDefault(); // Prevent form submission
+                return false;
+            } else {
+                document.getElementById("zipCode-error").innerText = "";
+            }
+
+            return true; // Form submission is allowed if all validations pass
+        }
+
+        function prevPage() {
+            // Redirect to the previous page (if needed)
+            window.location.href = "page3.html";
+        }
+
+        function nextPage() {
+            // Validate form fields before proceeding
+            if (validateForm()) {
+                // Redirect to the next page (page5.html)
+                window.location.href = "page5.html";
+            }
+        }
+    </script>
+</body>
+</html>

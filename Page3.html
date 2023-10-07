@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Personal Information Form</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <div class="logo-container">
+      <img src="logo.png" alt="Logo" class="logo" />
+    </div>
+
+    <div id="progress-bar-container">
+      <div id="progress-bar"></div>
+    </div>
+    <span id="step-count">Step 1 of 2</span>
+
+    <div class="content-container">
+      <h1>Personal Information</h1>
+      <form id="personal-info-form">
+        <div class="form-group">
+          <label for="firstName" class="form-label" id="pg2-label">First Name(*)</label>
+          <input
+            type="text"
+            id="firstName"
+            name="firstName"
+            class="form-input"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="middleName" class="form-label" id="pg2-label">Middle Name</label>
+          <input
+            type="text"
+            id="middleName"
+            name="middleName"
+            class="form-input"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="lastName" class="form-label" id="pg2-label">Last Name(*)</label>
+          <input
+            type="text"
+            id="lastName"
+            name="lastName"
+            class="form-input"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="secondLastName" class="form-label" id="pg2-label"
+            >Second Last Name</label
+          >
+          <input
+            type="text"
+            id="secondLastName"
+            name="secondLastName"
+            class="form-input"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="dob" class="form-label" id="pg2-label">Date of Birth(*)</label>
+          <input
+            type="text"
+            id="dob"
+            name="dob"
+            class="form-input"
+            placeholder="MM/DD/YYYY"
+            required
+          />
+          <span class="error-message" id="dob-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="ssn" class="form-label" id="pg2-label"
+            >Last 4 digits of your SSN(*)</label
+          >
+          <input
+            type="text"
+            id="ssn"
+            name="ssn"
+            class="form-input"
+            pattern="[0-9]{4}"
+            required
+          />
+        </div>
+
+        <div class="btn-container">
+            <button
+              type="button"
+              class="btn btn-primary-pre"
+              onclick="prevPage()"
+            >
+              Prev
+            </button>
+            <button type="button" class="btn btn-primary" id="next-button">
+              Next
+            </button>
+          </div>
+        </form>
+      </div>
+
+    <script>
+      var currentPage = 3; // Set the current page number for this page
+
+      function updateProgressBar() {
+        var progressBar = document.getElementById("progress-bar");
+        var stepCount = document.getElementById("step-count");
+        var totalPages = 5; // Set the total number of pages
+
+        var percentComplete = (currentPage / totalPages) * 100;
+
+        progressBar.style.width = percentComplete + "%";
+        stepCount.innerText = "Step " + currentPage + " of " + totalPages;
+      }
+
+      // Update the progress bar and step count when the page loads
+      window.onload = function () {
+        updateProgressBar();
+      };
+
+      document
+        .getElementById("next-button")
+        .addEventListener("click", function () {
+          if (validateForm()) {
+            nextPage();
+          }
+        });
+
+        function validateForm() {
+        // Validate form fields here
+        var firstName = document.getElementById("firstName").value;
+        var lastName = document.getElementById("lastName").value;
+        var dob = document.getElementById("dob").value;
+        var ssn = document.getElementById("ssn").value;
+
+        // Check if any of the required fields are empty
+        if (firstName.trim() === "" || lastName.trim() === "" || dob.trim() === "" || ssn.trim() === "") {
+          alert("Please fill in all required fields.");
+          return false;
+        }
+
+        // Add more specific validation rules for other fields if needed
+
+        return true; // Form is valid
+      }
+
+      function prevPage() {
+        // Redirect to the previous page (if needed)
+        window.location.href = "page2.html";
+      }
+
+      function nextPage() {
+        // Redirect to the next page (if needed)
+        window.location.href = "page4.html";
+      }
+    </script>
+
+      function prevPage() {
+        // Redirect to the previous page (if needed)
+        window.location.href = "page2.html";
+      }
+
+      function nextPage() {
+        // Redirect to the next page (if needed)
+        window.location.href = "page4.html";
+      }
+    </script>
+  </body>
+</html>

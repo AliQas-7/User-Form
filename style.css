@@ -1,0 +1,400 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+/* Logo and Header */
+.logo-container {
+    padding: 10px;
+    text-align: center; /* Center the logo horizontally */
+}
+
+.logo {
+    max-width: 20rem; /* Make the logo responsive */
+    height: auto; /* Maintain the aspect ratio */
+    margin-top: 1rem;
+}
+
+/* Content Container */
+.content-container {
+    text-align: center;
+    margin: 50px auto;
+    max-width: 900px;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #002855;
+}
+
+/* Form Styles */
+form {
+    text-align: left;
+    padding: 10px; /* Add some padding to the form */
+}
+
+
+
+input[type="radio"] {
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+h2 {
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #002855;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+/* Responsive Styles for screens with a max-width of 767px (Mobile) */
+@media screen and (max-width: 767px) {
+    .logo {
+      max-width: 150px;
+    }
+  
+    .content-container {
+      margin: 20px auto;
+      padding: 10px;
+      width: 100%;
+    }
+  
+    h1 {
+      font-size: 24px;
+    }
+  
+    h2 {
+      font-size: 20px;
+    }
+  
+    #pg2-label{
+        font-size: 10px;
+      }
+  
+    .form-input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+    }
+  
+    .error-message {
+      font-size: 14px;
+    }
+  
+    .btn-container {
+      text-align: center;
+    }
+
+    #pg5-h1{
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    #pg5-p{
+        font-size: 8px;
+    }
+  }
+  
+  /* Responsive Styles for screens with a max-width of 1023px (Tablet) */
+  @media screen and (max-width: 1023px) {
+    .logo {
+      max-width: 200px;
+    }
+  
+    .content-container {
+      margin: 30px auto;
+      padding: 15px;
+      width: 100%;
+    }
+  
+    h1 {
+      font-size: 30px;
+    }
+  
+    h2 {
+      font-size: 24px;
+    }
+    
+    #pg2-label{
+        font-size: 10px;
+      }
+  
+    .form-input {
+      width: 100%;
+      padding: 12px;
+      font-size: 18px;
+    }
+  
+    .error-message {
+      font-size: 16px;
+    }
+  
+    .btn-container {
+      text-align: center;
+    }
+
+    #pg5-h1{
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    #pg5-p{
+        font-size: 8px;
+    }
+  }
+  
+  
+
+
+/* School Name Field */
+#school-name-field {
+    margin-top: 20px;
+}
+
+#schoolName {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+#householdSize{
+    margin-bottom: 1rem;
+    height: 2rem;
+}
+
+#schoolName{
+    margin-bottom: 1rem;
+}
+
+#progress-bar-container {
+    width: 100%;
+    background-color: #f0f0f0;
+    margin-bottom: 20px;
+}
+
+#progress-bar {
+    width: 0;
+    height: 20px;
+    background-color: #4caf50;
+    transition: width 0.3s ease-in-out;
+}
+
+#step-count {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.error-message {
+    color: #f44336;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.btn-container {
+    text-align: center;
+}
+
+
+  /* Your button styles */
+  .btn {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 10px;
+  }
+  
+  .btn.btn-primary-pre {
+    background-color: #f44336;
+  }
+  
+  .btn.btn-primary-pre:hover {
+    background-color: #d32f2f;
+  }
+  
+/* Style the radio container */
+.radio-container {
+    display: flex;
+    gap: 10px;
+}
+
+/* Style the custom radio buttons */
+.radio-container input[type="radio"] {
+    display: none; /* Hide the default radio button */
+}
+
+/* Style the custom radio buttons label */
+.radio-container label {
+    position: relative;
+    padding-left: 30px; /* Space for the custom radio button */
+    cursor: pointer;
+}
+
+/* Style the custom radio button */
+.radio-container label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid green; /* Border color for the custom radio button */
+    border-radius: 50%;
+}
+
+/* Style the custom radio button when it's checked */
+.radio-container input[type="radio"]:checked + label::before {
+    background-color: green; /* Background color when checked */
+    border-color: green; /* Border color when checked */
+}
+
+/* Style the custom radio button when hovering over the label */
+.radio-container label:hover::before {
+    border-color: #0056b3; /* Border color on hover */
+}
+
+/* CSS for the label */
+label[for="bqpDetails"] {
+    width: 20rem;
+    display: inline-block;
+    vertical-align: top; /* Align label text to the top of the input field */
+    margin-right: 1rem; /* Add some spacing between the label and input */
+    
+  }
+  
+  /* CSS for the input field */
+  #bqpDetails {
+    width: 100%; /* Make the input field expand to fill its container */
+    padding: 0.5rem; /* Add some padding for better appearance */
+    border: 1px solid #ccc; /* Add a border for clarity */
+    border-radius: 4px; /* Add rounded corners */
+    box-sizing: border-box; /* Include padding and border in the total width */
+    margin-bottom: 1rem;
+  }
+  
+
+
+
+/* Credit Card Form Styles */
+.credit-card-container {
+    text-align: center;
+    margin: 50px auto;
+    max-width: 800px;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.credit-card-container h1 {
+    color: #002855;
+}
+
+.credit-card-form {
+    text-align: left;
+    padding: 10px;
+}
+
+.credit-card-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+.credit-card-form input[type="text"],
+.credit-card-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+.credit-card-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+.credit-card-form .error-message {
+    color: #f44336;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.credit-card-form .btn-container {
+    text-align: center;
+}
+
+/* Responsive Styles for Credit Card Form */
+@media screen and (max-width: 600px) {
+    .credit-card-container {
+        margin: 20px auto;
+        padding: 10px;
+    }
+
+    .credit-card-container h1 {
+        font-size: 24px;
+    }
+
+    .credit-card-form select {
+        width: 100%;
+    }
+}

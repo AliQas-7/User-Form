@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ACP Enrollment Form</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <div class="logo-container">
+      <img src="logo.png" alt="Logo" class="logo" />
+    </div>
+    <div id="progress-bar-container">
+      <div id="progress-bar"></div>
+      <span id="step-count">Step 2 of 3</span>
+    </div>
+
+    <div class="content-container">
+      <h1>Affordable Connectivity Program (ACP) Enrollment Form</h1>
+
+      <form id="enrollment-form" onsubmit="return validateForm(event)">
+        <h2>Eligibility Programs (*)</h2>
+        <label>
+          <input
+            type="radio"
+            name="eligibility"
+            value="FPHA"
+            id="first-radio"
+            onchange="showAdditionalInfo()"
+          />
+          Federal Public Housing Assistance (FPHA) </label
+        ><br />
+
+        <label>
+          <input
+            type="radio"
+            name="eligibility"
+            value="SchoolLunch"
+            onchange="showSchoolNameField()"
+          />
+          Free &amp; Reduced-Price School Lunch Program or School Breakfast
+          Program </label
+        ><br />
+        <label>
+          <input
+            type="radio"
+            name="eligibility"
+            value="Medicaid"
+            onchange="hideAboveButton()"
+          />
+          Medicaid </label
+        ><br />
+        <label>
+          <input
+            type="radio"
+            name="eligibility"
+            value="SNAP"
+            onchange="hideAboveButton()"
+          />
+          Supplemental Nutrition Assistance Program (SNAP/Food Stamps) </label
+        ><br />
+        <label>
+          <input
+            type="radio"
+            name="eligibility"
+            value="SSI"
+            onchange="hideAboveButton()"
+          />
+          Supplemental Security Income (SSI) </label
+        ><br />
+        <label>
+          <input
+            type="radio"
+            name="eligibility"
+            value="VeteransPension"
+            onchange="hideAboveButton()"
+          />
+          Veterans Pension and Survivors Benefit Programs </label
+        ><br />
+
+        <label>
+          <input
+            type="radio"
+            name="eligibility"
+            value="IncomeQualify"
+            onchange="showIncomeQualifySection()"
+          />
+          Qualify through my Income </label
+        ><br />
+
+        <label>
+          <input
+            type="radio"
+            name="eligibility"
+            value="PellGrant"
+            onchange="showPellGrantSection()"
+          />
+          Federal Pell Grant for the current award year </label
+        ><br />
+
+        <label>
+          <input
+            type="radio"
+            name="eligibility"
+            value="WIC"
+            onchange="hideAboveButton()"
+          />
+          Special Supplemental Nutrition Program (WIC) </label
+        ><br />
+
+        <h2>Tribal Specific Programs</h2>
+        <label>
+          <input
+            type="radio"
+            name="eligibility"
+            value="BIA"
+            onchange="hideAboveButton()"
+          />
+          Bureau of Indian Affairs (BIA) General Assistance </label
+        ><br />
+        <label>
+          <input
+            type="radio"
+            name="eligibility"
+            value="TribalTANF"
+            onchange="hideAboveButton()"
+          />
+          Tribal Temporary Assistance for Needy Families (Tribal TANF) </label
+        ><br />
+        <label>
+          <input
+            type="radio"
+            name="eligibility"
+            value="FDPIR"
+            onchange="hideAboveButton()"
+          />
+          Food Distribution Program on Indian Reservations (FDPIR) </label
+        ><br />
+        <label>
+          <input
+            type="radio"
+            name="eligibility"
+            value="TribalHeadStart"
+            onchange="hideAboveButton()"
+          />
+          Tribal Head Start (only households that meet the income qualifying
+          standard) </label
+        ><br />
+        <div id="additional-info" style="display: none">
+          <h2>Please select your housing assistance program(*)</h2>
+          <label>
+            <input type="radio" name="housingAssistance" value="HCV" />
+            Housing Choice Voucher (HCV) Program (Section 8 Vouchers) </label
+          ><br />
+          <label>
+            <input type="radio" name="housingAssistance" value="PBRA" />
+            Project-Based Rental Assistance (PBRA)/202/811 </label
+          ><br />
+          <label>
+            <input
+              type="radio"
+              name="housingAssistance"
+              value="PublicHousing"
+            />
+            Public Housing </label
+          ><br />
+          <label>
+            <input
+              type="radio"
+              name="housingAssistance"
+              value="AffordableHousing"
+            />
+            Affordable Housing Programs for American Indians, Alaska Natives or
+            Native Hawaiians </label
+          ><br />
+        </div>
+
+        <div id="school-name-field" style="display: none">
+          <h2>School Name(*)</h2>
+          <label for="schoolName">School Name:</label>
+          <input type="text" id="schoolName" name="schoolName" required />
+
+          <!-- Add the "Benefit Qualifying Person (BQP)" section -->
+          <h2>
+            Benefit Qualifying Person (BQP): Check if you are qualifying through
+            a child or dependent in your household.
+          </h2>
+          <label>
+            <input
+              type="radio"
+              name="bqp"
+              value="yes"
+              onchange="showBqpDetails()"
+            />
+            Yes
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="bqp"
+              value="no"
+              onchange="hideBqpDetails()"
+            />
+            No
+          </label>
+
+          <!-- Input field for BQP details -->
+          <div id="bqp-details" style="display: none">
+            <h2>Child/Dependent Details</h2>
+            <label for="bqpDetails" style="width: 20rem;">Details:</label>
+            <input type="text" id="bqpDetails" name="bqpDetails" />
+          </div>
+        </div>
+
+        <div id="household-info" style="display: none">
+          <h2>Number of People in Your Household(*)</h2>
+          <label for="householdSize">Household Size:</label>
+          <input
+            type="number"
+            id="householdSize"
+            name="householdSize"
+            min="1"
+            required
+          />
+        </div>
+
+        <div class="btn-container">
+          <button
+            type="button"
+            class="btn btn-primary-pre"
+            onclick="prevPage()"
+          >
+            Prev
+          </button>
+          <button type="button" class="btn btn-primary" id="next-button">
+            Next
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      var currentPage = 2; // Set the current page number for Page 2
+
+      function updateProgressBar() {
+        var progressBar = document.getElementById("progress-bar");
+        var stepCount = document.getElementById("step-count");
+        var totalPages = 5; // Set the total number of pages
+
+        var percentComplete = (currentPage / totalPages) * 100;
+
+        progressBar.style.width = percentComplete + "%";
+        stepCount.innerText = "Step " + currentPage + " of " + totalPages;
+      }
+
+      // Update the progress bar and step count when the page loads
+      window.onload = function () {
+        updateProgressBar();
+      };
+
+      document
+        .getElementById("enrollment-form")
+        .addEventListener("submit", function (event) {
+          if (!validateForm()) {
+            event.preventDefault(); // Prevent form submission if validation fails
+          }
+        });
+
+      function validateAdditionalInfo() {
+        var selectedEligibility = document.querySelector(
+          'input[name="eligibility"]:checked'
+        ).value;
+
+        if (selectedEligibility === "FPHA") {
+          var housingAssistanceOptions = document.querySelectorAll(
+            'input[name="housingAssistance"]'
+          );
+
+          // Check if at least one housing assistance option is selected
+          for (var i = 0; i < housingAssistanceOptions.length; i++) {
+            if (housingAssistanceOptions[i].checked) {
+              return true;
+            }
+          }
+
+          return false; // None of the housing assistance options are selected
+        } else if (
+          selectedEligibility === "SchoolLunch" ||
+          selectedEligibility === "PellGrant"
+        ) {
+          var schoolNameInput = document.getElementById("schoolName");
+          var schoolNameValue = schoolNameInput.value.trim();
+          return schoolNameValue !== "";
+        } else if (selectedEligibility === "IncomeQualify") {
+          var householdSizeInput = document.getElementById("householdSize");
+          var householdSizeValue = householdSizeInput.value.trim();
+          return !isNaN(householdSizeValue) && householdSizeValue !== "";
+        }
+
+        // No additional validation required for other eligibility options
+        return true;
+      }
+
+
+      function hideAboveButton() {
+        var additionalInfo = document.getElementById("additional-info");
+        var schoolNameField = document.getElementById("school-name-field");
+        var householdInfo = document.getElementById("household-info");
+
+        additionalInfo.style.display = "none";
+        schoolNameField.style.display = "none";
+        householdInfo.style.display = "none";
+      }
+
+      function showIncomeQualifySection() {
+        var additionalInfo = document.getElementById("additional-info");
+        var schoolNameField = document.getElementById("school-name-field");
+        var householdInfo = document.getElementById("household-info");
+        var incomeQualifyRadio = document.querySelector(
+          'input[name="eligibility"][value="IncomeQualify"]'
+        );
+
+        if (incomeQualifyRadio.checked) {
+          additionalInfo.style.display = "none";
+          schoolNameField.style.display = "none";
+          householdInfo.style.display = "block";
+        } else {
+          additionalInfo.style.display = "none";
+          schoolNameField.style.display = "none";
+          householdInfo.style.display = "none";
+        }
+      }
+
+      function showPellGrantSection() {
+        var additionalInfo = document.getElementById("additional-info");
+        var schoolNameField = document.getElementById("school-name-field");
+        var householdInfo = document.getElementById("household-info");
+        var pellGrantRadio = document.querySelector(
+          'input[name="eligibility"][value="PellGrant"]'
+        );
+
+        if (pellGrantRadio.checked) {
+          additionalInfo.style.display = "none";
+          schoolNameField.style.display = "block";
+          householdInfo.style.display = "none";
+        } else {
+          additionalInfo.style.display = "none";
+          schoolNameField.style.display = "none";
+          householdInfo.style.display = "none";
+        }
+      }
+
+      // New function to check if at least one eligibility option is selected
+      function validateEligibility() {
+        var eligibilityRadioButtons = document.querySelectorAll(
+          'input[name="eligibility"]'
+        );
+        for (var i = 0; i < eligibilityRadioButtons.length; i++) {
+          if (eligibilityRadioButtons[i].checked) {
+            return true; // At least one option is selected
+          }
+        }
+        return false; // No option is selected
+      }
+
+      function handleNextButtonClick() {
+        if (!validateEligibility()) {
+          alert("Please select an eligibility option.");
+        } else if (!validateAdditionalInfo()) {
+          alert("Please fill in all required fields.");
+        } else {
+          nextPage(); // Move to the next page if eligibility and fields are validated
+        }
+      }
+
+      document
+        .getElementById("next-button")
+        .addEventListener("click", function () {
+          handleNextButtonClick();
+        });
+
+      document
+        .getElementById("first-radio")
+        .addEventListener("change", function () {
+          var additionalInfo = document.getElementById("additional-info");
+
+          // If the first radio button is checked, show the "additional-info" div, otherwise, hide it
+          if (this.checked) {
+            additionalInfo.style.display = "block";
+          } else {
+            additionalInfo.style.display = "none";
+          }
+        });
+
+      function showBqpDetails() {
+        var bqpDetails = document.getElementById("bqp-details");
+        bqpDetails.style.display = "block";
+      }
+
+      function hideBqpDetails() {
+        var bqpDetails = document.getElementById("bqp-details");
+        bqpDetails.style.display = "none";
+      }
+
+      function showSchoolNameField() {
+        var schoolNameField = document.getElementById("school-name-field");
+        schoolNameField.style.display = "block";
+        schoolNameField.querySelector("input").required = true; // Make School Name required
+        hideBqpDetails(); // Hide BQP details initially
+      }
+
+      function prevPage() {
+        // Redirect to page1.html
+        window.location.href = "index.html";
+      }
+
+      function nextPage() {
+        // Redirect to page3.html
+        window.location.href = "page3.html";
+      }
+    </script>
+  </body>
+</html>

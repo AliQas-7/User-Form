@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Device Copay Payment</title>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+    </head>
+    <body>
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo" class="logo" />
+        </div>
+
+        <div id="progress-bar-container">
+            <div id="progress-bar"></div>
+        </div>
+        <span id="step-count">Step 1 of 1</span>
+
+        <div class="content-container">
+            <h1>Device Copay Payment</h1>
+            <h2 style="color: black" id="pg5-h1">
+                The Affordable Connectivity Program (ACP) allows qualifying
+                subscribers
+                to claim a one time discount toward a tablet.<br />
+                The FCC requires us to charge a copay amount.<br />
+                Our Copay for an Android Tablet with 4G LTE Connectivity is a
+                one-time
+                $11.00
+            </h2>
+            <p style="color: red" id="pg5-p">
+                (A transaction of $11.00 will be drafted when the prospect
+                subscriber is
+                approved to receive a Tablet)
+            </p>
+            <form
+                id="copay-payment-form"
+                action="Page6.html"
+                onsubmit="return validateForm(event)">
+                <div class="form-group">
+                    <label for="creditCardNumber" class="form-label" id = "pg2-label">Credit Card
+                        Number(*)</label>
+                    <input
+                        type="text"
+                        id="creditCardNumber"
+                        name="creditCardNumber"
+                        class="form-input"
+                        required />
+                    <span class="error-message" id="creditCardNumber-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="firstNameOnCard" class="form-label" id = "pg2-label">First Name
+                        on Credit Card(*)</label>
+                    <input
+                        type="text"
+                        id="firstNameOnCard"
+                        name="firstNameOnCard"
+                        class="form-input"
+                        required />
+                    <span class="error-message" id="firstNameOnCard-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="cvvCode" class="form-label" id = "pg2-label">CVV Code(*)</label>
+                    <input
+                        type="text"
+                        id="cvvCode"
+                        name="cvvCode"
+                        class="form-input"
+                        required />
+                    <span class="error-message" id="cvvCode-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastNameOnCard" class="form-label" id = "pg2-label">Last Name on
+                        Credit Card(*)</label>
+                    <input
+                        type="text"
+                        id="lastNameOnCard"
+                        name="lastNameOnCard"
+                        class="form-input"
+                        required />
+                    <span class="error-message" id="lastNameOnCard-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="expDate" class="form-label" id = "pg2-label">Exp. Date(*)
+                        (MM/YYYY)</label>
+                    <input
+                        type="text"
+                        id="expDate"
+                        name="expDate"
+                        class="form-input"
+                        placeholder="MM/YYYY"
+                        required />
+                    <span class="error-message" id="expDate-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="addressOnCard" class="form-label" id = "pg2-label">Address on
+                        Credit Card(*)</label>
+                    <input
+                        type="text"
+                        id="addressOnCard"
+                        name="addressOnCard"
+                        class="form-input"
+                        required />
+                    <span class="error-message" id="addressOnCard-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="cityOnCard" class="form-label" id = "pg2-label">City on Credit
+                        Card(*)</label>
+                    <input
+                        type="text"
+                        id="cityOnCard"
+                        name="cityOnCard"
+                        class="form-input"
+                        required />
+                    <span class="error-message" id="cityOnCard-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="stateOnCard" class="form-label" id = "pg2-label">State on Credit
+                        Card(*)</label>
+                    <input
+                        type="text"
+                        id="stateOnCard"
+                        name="stateOnCard"
+                        class="form-input"
+                        required />
+                    <span class="error-message" id="stateOnCard-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="zipCodeOnCard" class="form-label" id = "pg2-label">Zip Code on
+                        Credit Card(*)</label>
+                    <input
+                        type="text"
+                        id="zipCodeOnCard"
+                        name="zipCodeOnCard"
+                        class="form-input"
+                        pattern="[0-9]{5}"
+                        required />
+                    <span class="error-message" id="zipCodeOnCard-error"></span>
+                </div>
+
+                <div class="btn-container">
+                    <button
+                        type="button"
+                        class="btn btn-primary-pre"
+                        onclick="prevPage()">
+                        Prev
+                    </button>
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                        onclick="return validateForm()">
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <script>
+            var currentPage = 5; // Set the current page number for this page
+        
+            function updateProgressBar() {
+                var progressBar = document.getElementById("progress-bar");
+                var stepCount = document.getElementById("step-count");
+                var totalPages = 5; // Set the total number of pages
+        
+                var percentComplete = (currentPage / totalPages) * 100;
+        
+                progressBar.style.width = percentComplete + "%";
+                stepCount.innerText = "Step " + currentPage + " of " + totalPages;
+            }
+        
+            // Update the progress bar and step count when the page loads
+            window.onload = function () {
+                updateProgressBar();
+            };
+        
+            function validateForm(event) {
+                // Implement validation logic for form fields here
+                var isValid = true;
+        
+                // Example validation for credit card number (You should implement secure validation)
+                var creditCardNumber = document.getElementById("creditCardNumber").value;
+                if (!creditCardNumber.match(/^\d{16}$/)) {
+                    document.getElementById("creditCardNumber-error").textContent = "Invalid credit card number";
+                    isValid = false;
+                } else {
+                    document.getElementById("creditCardNumber-error").textContent = "";
+                }
+        
+                // Implement validation for other fields similarly
+        
+                return isValid;
+            }
+        
+            function prevPage() {
+                // Redirect to the previous page (if needed)
+                window.location.href = "page4.html";
+            }
+        
+            function nextPage() {
+                // Redirect to the next page (if needed)
+                window.location.href = "page6.html";
+            }
+        </script>
+        
+    </body>
+</html>

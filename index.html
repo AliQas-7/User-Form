@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ACP Enrollment Form</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+ 
+</head>
+<body>
+    <div class="logo-container">
+        <img src="logo.png" alt="Logo" class="logo" />
+    </div>
+
+
+    <div class="content-container">
+      <div id="progress-bar-container">
+        <div id="progress-bar"></div>
+    </div>
+    <span id="step-count">Step 1 of 3</span>
+        <h1>Affordable Connectivity Program (ACP) | Form 5645 online | test</h1>
+       
+        <form id="enrollment-form" action="Page2.html" onsubmit="return validateForm()">
+            <label for="options">Please Select from the list(*)</label>
+            <select id="options" name="options" aria-label="Select an option">
+                <option value="option1">Drop Down Menu</option>
+                <option value="option2">Test</option>
+                <option value="option3">Test2</option>
+            </select>
+            <br />
+            <div class="btn-container">
+              <button href="page2.html" class="btn btn-primary" onclick="nextPage()">Next</button>
+          </div>
+        </form>
+    </div>
+
+    <script>
+        var currentPage = 1; // Initialize the current page
+
+        function updateProgressBar() {
+            var progressBar = document.getElementById("progress-bar");
+            var stepCount = document.getElementById("step-count");
+            var totalPages = 5; // Set the total number of pages
+
+            var percentComplete = (currentPage / totalPages) * 100;
+
+            progressBar.style.width = percentComplete + "%";
+            stepCount.innerText = "Step " + currentPage + " of " + totalPages;
+        }
+
+        // Update the progress bar and step count when the page loads
+        window.onload = function () {
+            updateProgressBar();
+        };
+
+        // Function to navigate to the next page
+        function nextPage() {
+            if (currentPage < 3) { // Change '3' to the total number of pages
+                currentPage++;
+                updateProgressBar();
+                // Navigate to the next page using JavaScript, e.g., window.location.href = "Page2.html";
+            }
+        }
+
+        // Function to validate the form before submission
+        function validateForm() {
+            // Add your form validation logic here
+            return true; // Return true if the form is valid; otherwise, return false.
+        }
+
+        function nextPage() {
+        // Redirect to page2.html
+        window.location.href = "page2.html";
+      }
+    </script>
+</body>
+</html>

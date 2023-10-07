@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ACP Enrollment Form</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+ 
+</head>
+<body>
+    <div class="logo-container">
+        <img src="logo.png" alt="Logo" class="logo" />
+    </div>
+
+
+    <div class="content-container">
+      <div id="progress-bar-container">
+        <div id="progress-bar"></div>
+    </div>
+    <span id="step-count">Submitted</span>
+        <h1>Affordable Connectivity Program (ACP) | Form 5645 online | test</h1>
+       
+        <form id="enrollment-form" action="index.html" onsubmit="return validateForm()">
+            <h1 style="margin-left: 8rem;">Your Form Submitted Successfully</h1>
+            <div class="btn-container">
+              <button href="page2.html" class="btn btn-primary" onclick="nextPage()">Next</button>
+          </div>
+        </form>
+    </div>
+
+    <script>
+        function nextPage() {
+        // Redirect to page2.html
+        window.location.href = "index.html";
+      }
+    </script>
+</body>
+</html>
